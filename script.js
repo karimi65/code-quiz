@@ -1,11 +1,16 @@
-var startButton = document.getElementById('quiz');
+var startButton = document.getElementById('start');
  
 startButton.addEventListener("click", startQuiz);
  
 function startQuiz() {
-    var timer = 60;
+    var myTime = 60;
     setInterval(function() {
-        timer--
-        startButton.textContent = "Time: " + timer
+        myTime--
+        startButton.textContent = "Time: " + myTime
+
+        if (myTime <= 0) {
+            startButton.textContent = " Time Is Over!";
+            // clearInterval();
+        }
     }, 1000)
 }
