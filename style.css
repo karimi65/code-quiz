@@ -1,0 +1,21 @@
+.container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+#start-btn {
+    background-color: rgb(133, 185, 194);
+    font-size: 20px;
+}
+
+#start-btn:hover {
+    font-weight: bold;
+}
+
+
+
