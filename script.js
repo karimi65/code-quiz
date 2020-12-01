@@ -76,7 +76,24 @@ function codeQuestion() {
         var answerOptions = document.createElement('li');
         answerOptions.textContent = Items;
         createUl.appendChild(answerOptions);
+        answerOptions.addEventListener('click', (check));
     }
+}
+  // add function to check the answer
+function check(event) {
+    if (event.target.matches('li')) {
+        var newDiv = document.createElement('div');
+        newDiv.setAttribute('id', 'newDiv');
+        
+        if (event.target.textContent == questions[questionIndex].correct ) {
+            score++;
+            newDiv.textContent = "correct!"
+        } else {
+            timeLeft = timeLeft - 10;
+            newDiv.textContent = "Wrong! The answer is: " + questions[questionIndex].correct;
+        }
+    } 
+    questionIndex++;
 }
 
 
