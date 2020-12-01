@@ -1,3 +1,4 @@
+// add questions and answers
 var questions = [
     {
         question: 'Arrays in Javascript can be used to store ____.',
@@ -26,35 +27,46 @@ var questions = [
     },
 
 ];
+
+// add variables
+var score = 0;
 var questionIndex = 0;
 
-var startButton = document.getElementById('start');
-startButton.addEventListener("click", startQuiz);
+var questionDiv = document.getElementById('questions');
+var answerList = document.getElementById('answerList');
+var myTime = document.getElementById('myTime');
+var timer = document.getElementById('start-btn');
+var timeLeft = 5;
 
-var questionDiv = document.getElementById('questions')
-var answerList = document.getElementById('answerList')
+// add listener to start-btn element
+timer.addEventListener("click", startQuiz);
 
- 
+// after click on start button function below will be started!
 function startQuiz() {
-    var myTime = 5;
     setInterval(function() {
-        myTime--
-        startButton.textContent = "Time: " + myTime
+        timeLeft--;
+        myTime.textContent = "Time: " + timeLeft
 
-        if (myTime <= 0) {
-            startButton.textContent = " Time Is Over!";
+    if (timeLeft <= 0) {
+        myTime.textContent = " Time Is Over!";
             // clearInterval();
         }
     }, 1000)
     codeQuestion();
 }
 
+var userQuestion;
+var userChoices;
+
 function codeQuestion() {
     questionDiv.innerHTML = "";
-    for (var i = 0; i < questions.length; i++) {
-         questionDiv.textContent = questions[questionIndex].question;
-         answerList.textContent = questions[questionIndex].answers;
+    // answerList.innerHTML = "";
 
+    for (var i = 0; i < questions.length; i++) {
+        userQuestion = questions[questionIndex].question;
+        
+        questionDiv.textContent = userQuestion;
+       
     }
 }
 
