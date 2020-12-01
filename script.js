@@ -33,7 +33,8 @@ var score = 0;
 var questionIndex = 0;
 
 var questionDiv = document.getElementById('questions');
-var answerList = document.getElementById('answerList');
+var createUl = document.createElement('ul');
+    questionDiv.appendChild(createUl);
 var myTime = document.getElementById('myTime');
 var timer = document.getElementById('start-btn');
 var timeLeft = 5;
@@ -60,13 +61,23 @@ var userChoices;
 
 function codeQuestion() {
     questionDiv.innerHTML = "";
-    // answerList.innerHTML = "";
+    createUl.innerHTML = "";
 
     for (var i = 0; i < questions.length; i++) {
         userQuestion = questions[questionIndex].question;
-        
+        userChoices = questions[questionIndex].answers;
         questionDiv.textContent = userQuestion;
        
     }
+    // call a function for each element in an array
+    userChoices.forEach(myFunction);
+
+    function myFunction(Items) {
+        var answerOptions = document.createElement('li');
+        answerOptions.textContent = Items;
+        createUl.appendChild(answerOptions);
+    }
 }
+
+
 
