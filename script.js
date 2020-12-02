@@ -36,7 +36,7 @@ var myTime = document.getElementById('myTime');
 var timer = document.getElementById('start-btn');
 var questionDiv = document.getElementById('questions');
 var wrapper = document.querySelector('.container')
-
+var holdTime = 0;
 var timeForQuiz = questions.length * 15
 var ulTag = document.createElement('ul');
 
@@ -45,16 +45,18 @@ timer.addEventListener("click", startQuiz);
 
 // after click on start button function below will be started!
 function startQuiz() {
-    var myVar = setInterval(myInterval, 1000);
+    if (holdTime === 0) {
+        holdTime = setInterval(myInterval, 1000);
     
-    function myInterval() {
-        timeForQuiz--;
-        myTime.textContent = "Time: " + timeForQuiz
-    
-        if (timeForQuiz <= 0) {
-            clearInterval(myVar);
-            done();
-            myTime.textContent = " Time Is Over!";
+        function myInterval() {
+            timeForQuiz--;
+            myTime.textContent = "Time: " + timeForQuiz
+        
+            if (timeForQuiz <= 0) {
+                clearInterval(myVar);
+                done();
+                myTime.textContent = " Time Is Over!";
+            }
         }
     }
     displayQuestion();
@@ -97,7 +99,7 @@ function check(event) {
             newDiv.textContent = "correct!"
         } else {
             timeForQuiz = timeForQuiz - 10;
-            newDiv.textContent = "Wrong! The answer is: " + questions[questionIndex].correct;
+            newDiv.textContent = "Wrong!"
         }
     } 
     questionIndex++;
@@ -129,7 +131,7 @@ function done() {
     if (timeForQuiz >= 0) {
         var finalScore = score + timeForQuiz;
         var pTag2 = document.createElement('p');
-        clearInterval();
+        clearInterval(holdTime);
         pTag.textContent = "Your Final Score is: " + finalScore;
         questionDiv.appendChild(pTag2);
 
