@@ -49,17 +49,18 @@ function startQuiz() {
         myTime.textContent = "Time: " + timeLeft
 
     if (timeLeft <= 0) {
+        done();
         myTime.textContent = " Time Is Over!";
             // clearInterval();
         }
     }, 1000)
-    codeQuestion();
+    displayQuestion();
 }
 
 var userQuestion;
 var userChoices;
 
-function codeQuestion() {
+function displayQuestion() {
     questionDiv.innerHTML = "";
     createUl.innerHTML = "";
 
@@ -67,7 +68,7 @@ function codeQuestion() {
         userQuestion = questions[questionIndex].question;
         userChoices = questions[questionIndex].answers;
         questionDiv.textContent = userQuestion;
-       
+        // createUl.textContent = userChoices;
     }
     // call a function for each element in an array
     userChoices.forEach(myFunction);
@@ -79,6 +80,7 @@ function codeQuestion() {
         answerOptions.addEventListener('click', (check));
     }
 }
+
   // add function to check the answer
 function check(event) {
     if (event.target.matches('li')) {
@@ -94,6 +96,39 @@ function check(event) {
         }
     } 
     questionIndex++;
+
+    if (questionIndex >= questions.length) {
+        done();
+        newDiv.textContent = "Done! " + "Your score is " + score +"/" + questions.length;
+    } else {
+        displayQuestion();
+    }
+    questionDiv.appendChild(newDiv);
+}
+
+// function when done!
+function done() {
+    questionDiv.innerHTML = "";
+    myTime.innerHTML = "";
+
+    var h1Tag = document.createElement('h1');
+    h1Tag.setAttribute('id', 'head1');
+    h1Tag.textContent = 'All Done!'
+    questionDiv.appendChild(h1Tag);
+
+
+    var pTag = document.createElement('p');
+    pTag.setAttribute('id', 'paragraph');
+    questionDiv.appendChild(pTag);
+
+    if (timeLeft >= 0) {
+        finalScore = score + timeLeft;
+        var pTag2 = document.createElement('p');
+        clearInterval();
+        pTag.textContent = "Your Final Score is: " + finalScore;
+        questionDiv.appendChild(pTag2);
+
+    }
 }
 
 
