@@ -122,7 +122,7 @@ function done() {
     questionDiv.appendChild(pTag);
 
     if (timeLeft >= 0) {
-        finalScore = score + timeLeft;
+        var finalScore = score + timeLeft;
         var pTag2 = document.createElement('p');
         clearInterval();
         pTag.textContent = "Your Final Score is: " + finalScore;
@@ -130,7 +130,7 @@ function done() {
 
     }
 
-    lableTag = document.createElement('lable');
+    var lableTag = document.createElement('lable');
     lableTag.setAttribute('id', 'lableEl');
     lableTag.innerText = "Inter your initials: ";
     questionDiv.appendChild(lableTag);
@@ -146,6 +146,31 @@ function done() {
     submitBtn.innerText = 'Submit';
     questionDiv.appendChild(submitBtn);
 
+
+    submitBtn.addEventListener('click', function() {
+        var initials = inputTag.value;
+
+        if (initials === null) {
+            alert ('Please enter your initials');
+        } else {
+            var userScores = {
+                initials: initials,
+                score: finalScore
+            }
+            console.log(userScores);
+            // receiving data from localStorage
+            var allUserScores = localStorage.getItem('allUserScores');
+            if (allUserScores === null) {
+                allUserScores = [];
+            } else {
+                allUserScores = JSON.parse(allUserScores)   
+            }   
+            // sending data to localStorage 
+            allUserScores.push(userScores);
+            var newScore = JSON.stringify(allUserScores);
+            localStorage.setItem('allUserScores', newScore);
+        }
+    });
 
 
 }
