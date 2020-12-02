@@ -11,7 +11,7 @@ var questions = [
         correct: 'HTML',
     },
     {
-        questin: 'What tag do you need to use to enclose the Javascript code?',
+        question: 'What tag do you need to use to enclose the Javascript code?',
         answers: ['body', 'script', 'style', 'code'],
         correct: 'script',
     },
@@ -21,7 +21,7 @@ var questions = [
         correct: '<button>',
     },
     {
-        questin: 'Where should the style tag be declared to organize an internal CSS?',
+        question: 'Where should the style tag be declared to organize an internal CSS?',
         answers: ['body', 'external file', 'head', 'both 2 and 3'],
         correct: 'head'
     },
@@ -36,9 +36,9 @@ var myTime = document.getElementById('myTime');
 var timer = document.getElementById('start-btn');
 var questionDiv = document.getElementById('questions');
 var wrapper = document.querySelector('.container')
-var ulTag = document.createElement('ul');
 
-var timeForQuiz = questions.length * 2
+var timeForQuiz = questions.length * 15
+var ulTag = document.createElement('ul');
 
 // add listener to start-btn element
 timer.addEventListener("click", startQuiz);
@@ -63,29 +63,32 @@ function startQuiz() {
 
 
 function displayQuestion() {
+
     questionDiv.innerHTML = "";
     ulTag.innerHTML = "";
 
     for (var i = 0; i < questions.length; i++) {
+
         var userQuestion = questions[questionIndex].question;
         var userChoices = questions[questionIndex].answers;
         questionDiv.textContent = userQuestion;
-        ulTag.textContent = userChoices;
     }
-    // call a function for each element in an array
-    userChoices.forEach(myFunction);
+        // call a function for each element in an array
+        userChoices.forEach(myFunction);
+    
+        function myFunction(Items) {
+            var answerOptions = document.createElement('button');
+            answerOptions.textContent = Items;
+            questionDiv.appendChild(ulTag);
+            ulTag.appendChild(answerOptions);
+            answerOptions.addEventListener('click', (check));
+        }
 
-    function myFunction(Items) {
-        var answerOptions = document.createElement('li');
-        answerOptions.textContent = Items;
-        ulTag.appendChild(answerOptions);
-        answerOptions.addEventListener('click', (check));
-    }
 }
 
   // add function to check the answer
 function check(event) {
-    if (event.target.matches('li')) {
+    if (event.target.matches('button')) {
         var newDiv = document.createElement('div');
         newDiv.setAttribute('id', 'newDiv');
         
@@ -176,6 +179,4 @@ function done() {
 
 
 }
-
-
 
