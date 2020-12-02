@@ -32,43 +32,45 @@ var questions = [
 var score = 0;
 var questionIndex = 0;
 
-var questionDiv = document.getElementById('questions');
-var createUl = document.createElement('ul');
-    questionDiv.appendChild(createUl);
 var myTime = document.getElementById('myTime');
 var timer = document.getElementById('start-btn');
-var timeLeft = 5;
+var questionDiv = document.getElementById('questions');
+var wrapper = document.querySelector('.container')
+var ulTag = document.createElement('ul');
+
+var timeForQuiz = questions.length * 2
 
 // add listener to start-btn element
 timer.addEventListener("click", startQuiz);
 
 // after click on start button function below will be started!
 function startQuiz() {
-    setInterval(function() {
-        timeLeft--;
-        myTime.textContent = "Time: " + timeLeft
-
-    if (timeLeft <= 0) {
-        done();
-        myTime.textContent = " Time Is Over!";
-            // clearInterval();
+    var myVar = setInterval(myInterval, 1000);
+    
+    function myInterval() {
+        timeForQuiz--;
+        myTime.textContent = "Time: " + timeForQuiz
+    
+        if (timeForQuiz <= 0) {
+            clearInterval(myVar);
+            done();
+            myTime.textContent = " Time Is Over!";
         }
-    }, 1000)
+    }
     displayQuestion();
+            
 }
 
-var userQuestion;
-var userChoices;
 
 function displayQuestion() {
     questionDiv.innerHTML = "";
-    createUl.innerHTML = "";
+    ulTag.innerHTML = "";
 
     for (var i = 0; i < questions.length; i++) {
-        userQuestion = questions[questionIndex].question;
-        userChoices = questions[questionIndex].answers;
+        var userQuestion = questions[questionIndex].question;
+        var userChoices = questions[questionIndex].answers;
         questionDiv.textContent = userQuestion;
-        // createUl.textContent = userChoices;
+        ulTag.textContent = userChoices;
     }
     // call a function for each element in an array
     userChoices.forEach(myFunction);
@@ -76,7 +78,7 @@ function displayQuestion() {
     function myFunction(Items) {
         var answerOptions = document.createElement('li');
         answerOptions.textContent = Items;
-        createUl.appendChild(answerOptions);
+        ulTag.appendChild(answerOptions);
         answerOptions.addEventListener('click', (check));
     }
 }
@@ -91,7 +93,7 @@ function check(event) {
             score++;
             newDiv.textContent = "correct!"
         } else {
-            timeLeft = timeLeft - 10;
+            timeForQuiz = timeForQuiz - 10;
             newDiv.textContent = "Wrong! The answer is: " + questions[questionIndex].correct;
         }
     } 
@@ -121,8 +123,8 @@ function done() {
     pTag.setAttribute('id', 'paragraph');
     questionDiv.appendChild(pTag);
 
-    if (timeLeft >= 0) {
-        var finalScore = score + timeLeft;
+    if (timeForQuiz >= 0) {
+        var finalScore = score + timeForQuiz;
         var pTag2 = document.createElement('p');
         clearInterval();
         pTag.textContent = "Your Final Score is: " + finalScore;
