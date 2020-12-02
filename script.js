@@ -129,6 +129,25 @@ function done() {
         questionDiv.appendChild(pTag2);
 
     }
+
+    lableTag = document.createElement('lable');
+    lableTag.setAttribute('id', 'lableEl');
+    lableTag.innerText = "Inter your initials: ";
+    questionDiv.appendChild(lableTag);
+
+
+    var inputTag = document.createElement('input');
+    inputTag.setAttribute('type', 'text');
+    inputTag.innerText = "";
+    questionDiv.appendChild(inputTag);
+
+    var submitBtn = document.createElement('button');
+    submitBtn.setAttribute('type', 'submit');
+    submitBtn.innerText = 'Submit';
+    questionDiv.appendChild(submitBtn);
+
+
+
 }
 
 
