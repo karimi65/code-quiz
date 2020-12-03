@@ -157,8 +157,8 @@ function done() {
     submitBtn.addEventListener('click', function() {
         var initials = inputTag.value;
 
-        if (initials === null) {
-            alert ('Please enter your initials');
+        if (initials === "") {
+            alert('Please enter your initials');
         } else {
             var userScores = {
                 initials: initials,
