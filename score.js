@@ -11,19 +11,19 @@ function clearScores() {
 };
 // get data from local storage
 var allUserScores = localStorage.getItem("allUserScores");
-allUserScores = Json.parse(allUserScores);
+allUserScores = JSON.parse(allUserScores);
 
 if (allUserScores !== null) {
 
     for (var i = 0; i < allUserScores.length; i++) {
         var liTag = document.createElement('li');
-        liTag.textContent = allUserScores[i].initials + " " + allUserScores[i].finalScore;
-        scores.appendChild(litag);
+        liTag.textContent = allUserScores[i].initials + " " + allUserScores[i].score;
+        scores.appendChild(liTag);
     }
 }
 
 backBtn.addEventListener('click', goBack);
 
 function goBack() {
-    window.location.reload("index.html");
+    window.location.replace("index.html");
 }

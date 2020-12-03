@@ -176,6 +176,7 @@ function done() {
             allUserScores.push(userScores);
             var newScore = JSON.stringify(allUserScores);
             localStorage.setItem('allUserScores', newScore);
+            window.location.replace("score.html");
         }
     });
 
