@@ -29,7 +29,7 @@ var questions = [
 ];
 
 // add variables
-var score = 0;
+var correctAnswer = 0;
 var questionIndex = 0;
 
 var myTime = document.getElementById('myTime');
@@ -75,10 +75,10 @@ function displayQuestion() {
         var userChoices = questions[questionIndex].answers;
         questionDiv.textContent = userQuestion;
     }
-        // call a function for each element in an array
-        userChoices.forEach(myFunction);
+        // call a function for each element in the answer array
+        userChoices.forEach(myChoices);
     
-        function myFunction(Items) {
+        function myChoices(Items) {
             var answerOptions = document.createElement('button');
             answerOptions.textContent = Items;
             questionDiv.appendChild(ulTag);
@@ -95,7 +95,7 @@ function check(event) {
         newDiv.setAttribute('id', 'newDiv');
         
         if (event.target.textContent == questions[questionIndex].correct ) {
-            score++;
+            correctAnswer++;
             newDiv.textContent = "correct!"
         } else {
             timeForQuiz = timeForQuiz - 10;
@@ -106,7 +106,7 @@ function check(event) {
 
     if (questionIndex >= questions.length) {
         done();
-        newDiv.textContent = "Done! " + "Your score is " + score +"/" + questions.length;
+        newDiv.textContent = "Your correct answer is " + correctAnswer +"/" + questions.length;
     } else {
         displayQuestion();
     }
@@ -129,7 +129,7 @@ function done() {
     questionDiv.appendChild(pTag);
 
     if (timeForQuiz >= 0) {
-        var finalScore = score + timeForQuiz;
+        var finalScore = correctAnswer + timeForQuiz;
         var pTag2 = document.createElement('p');
         clearInterval(holdTime);
         pTag.textContent = "Your Final Score is: " + finalScore;
