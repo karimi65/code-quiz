@@ -1,34 +1,42 @@
-body {background-color: rgb(230, 212, 179);
-    
-}
 
-#myTime {
-    /* text-align: right; */
-    margin-top: 400px;
+body {
+    background-color: rgb(230, 212, 179);
+    padding: 0px;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
 }
 
 .container {
-    text-align: center;
-    margin-top: 60px;
-    width: 100%;
-    height: 600px;
+     text-align: center;
+     margin-top: 30px; 
+     padding-top: 5px;
+     padding-bottom: 10px;
+     width: 800px;
+     max-width: 80%; 
     background-color: rgb(138, 204, 212);
-    font-family: Arial, Helvetica, sans-serif;
-      
+    box-shadow: 0 0 10px 2px;
+ 
    }
 
    h1 {
-       margin-top: 10px;
+       margin-top: 5px;
    }
 
+#myTime {
+    margin-top: 20px;
+}
+
+
+  
 p {
     font-size: 18px;
     line-height: 28px;
-    margin-top: 50px;
 }
 
 button {
     border-radius: 5px;
+    font-size: 18px;
 }
 
 button:hover {
@@ -38,20 +46,37 @@ button:hover {
 #start-btn {
     background-color: rgb(133, 185, 194);
     font-size: 20px;
-    margin-top: 40px;
+    
 }
 
-#questions {
 
-}
 
 
 #answerBtns {
- display: block;
- margin-top: 10px;
- font-size: 16px;
+    display: block;
+    margin-top: 10px;
+} 
+
+#newDiv {
+  margin-top: 20px;
 
 }
 
+input {
+    font-size: 18px;
+}
 
+#scores {
+    list-style-type: none;
+
+}
+
+li {
+    background-color: rgb(226, 154, 152);
+    margin: 3px;
+    font-size: 18px;
+}
+
+/* alternate the background colors for each item of list */
+li:nth-child(odd) { background-color: rgb(193, 199, 135); }   
 
