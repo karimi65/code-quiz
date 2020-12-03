@@ -18,6 +18,13 @@ p {
 }
 
 
+/* button:not(#start-btn):not(#clear):not(#back) {
+    display: block;
+    margin: 10px;
+    position: relative;
+    
+
+} */
 
 
 
