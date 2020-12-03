@@ -80,7 +80,7 @@ function displayQuestion() {
     
         function myChoices(Items) {
             var answerOptions = document.createElement('button');
-            answerOptions.setAttribute('id', 'answerOptions')
+            answerOptions.setAttribute('id', 'answerBtns')
             answerOptions.textContent = Items;
             questionDiv.appendChild(ulTag);
             ulTag.appendChild(answerOptions);
