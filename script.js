@@ -53,7 +53,7 @@ function startQuiz() {
             myTime.textContent = "Time: " + timeForQuiz
         
             if (timeForQuiz <= 0) {
-                clearInterval(myVar);
+                clearInterval(holdTime);
                 done();
                 myTime.textContent = " Time Is Over!";
             }
