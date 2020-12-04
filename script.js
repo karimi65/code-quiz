@@ -35,15 +35,14 @@ var questionIndex = 0;
 var myTime = document.getElementById('myTime');
 var timer = document.getElementById('start-btn');
 var questionDiv = document.getElementById('questions');
-var wrapper = document.querySelector('.container')
 var holdTime = 0;
-var timeForQuiz = questions.length * 15
+var timeForQuiz = questions.length * 15  // 15 seconds for each question
 var ulTag = document.createElement('ul');
 
 // add listener to start-btn element
 timer.addEventListener("click", startQuiz);
 
-// after click on start button function below will be started!
+// after click on start button quiz will be started!
 function startQuiz() {
     if (holdTime === 0) {
         holdTime = setInterval(myInterval, 1000);
@@ -63,7 +62,7 @@ function startQuiz() {
             
 }
 
-
+// function for getting questions
 function displayQuestion() {
 
     questionDiv.innerHTML = "";
@@ -99,7 +98,7 @@ function check(event) {
             correctAnswer++;
             newDiv.textContent = "correct!"
         } else {
-            timeForQuiz = timeForQuiz - 10;
+            timeForQuiz = timeForQuiz - 10;  // wrong answers will penalize the time by ten second
             newDiv.textContent = "Wrong!"
         }
     } 
@@ -130,25 +129,26 @@ function done() {
     questionDiv.appendChild(pTag);
 
     if (timeForQuiz >= 0) {
-        var finalScore = correctAnswer + timeForQuiz;
+        var finalScore = correctAnswer + timeForQuiz;    // final score is the sum of correct answers and remaining time
         var pTag2 = document.createElement('p');
-        clearInterval(holdTime);
+        clearInterval(holdTime);  
         pTag.textContent = "Your Final Score is: " + finalScore;
         questionDiv.appendChild(pTag2);
 
     }
-
+    // add lable
     var lableTag = document.createElement('lable');
     lableTag.setAttribute('id', 'lableEl');
     lableTag.innerText = "Inter your initials: ";
     questionDiv.appendChild(lableTag);
 
-
+    // add input 
     var inputTag = document.createElement('input');
     inputTag.setAttribute('type', 'text');
     inputTag.innerText = "";
     questionDiv.appendChild(inputTag);
 
+    // add submit button
     var submitBtn = document.createElement('button');
     submitBtn.setAttribute('type', 'submit');
     submitBtn.innerText = 'Submit';
@@ -177,7 +177,7 @@ function done() {
             allUserScores.push(userScores);
             var newScore = JSON.stringify(allUserScores);
             localStorage.setItem('allUserScores', newScore);
-            window.location.replace("score.html");
+            window.location.replace("score.html");   // link to score page!
         }
     });
 

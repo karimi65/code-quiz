@@ -22,8 +22,9 @@ if (allUserScores !== null) {
     }
 }
 
+// when click on back button it goes to start page!
 backBtn.addEventListener('click', goBack);
 
 function goBack() {
-    window.location.replace("index.html");
+    window.location.replace("index.html");  
 }
