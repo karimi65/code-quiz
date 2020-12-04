@@ -1,27 +1,27 @@
 // add questions and answers
 var questions = [
     {
-        question: 'Arrays in Javascript can be used to store ____.',
+        question: '1- Arrays in Javascript can be used to store ____.',
         answers: ['numbers and strings', 'booleans', 'other arrays', 'all of the above'],
         correct: 'all of the above' 
     },
     {
-        question: 'Which computer language structures all webpages on the internet?',
+        question: '2- Which computer language structures all webpages on the internet?',
         answers: ['HTML', 'Javascript', 'Java', 'CSS'],
         correct: 'HTML',
     },
     {
-        question: 'What tag do you need to use to enclose the Javascript code?',
+        question: '3- What tag do you need to use to enclose the Javascript code?',
         answers: ['body', 'script', 'style', 'code'],
         correct: 'script',
     },
     {
-        question: 'Which one of these HTML tags creates a button?',
+        question: '4- Which one of these HTML tags creates a button?',
         answers: ['<h1>', '<video>', '<button>', '<p>'],
         correct: '<button>',
     },
     {
-        question: 'Where should the style tag be declared to organize an internal CSS?',
+        question: '5- Where should the style tag be declared to organize an internal CSS?',
         answers: ['body', 'external file', 'head', 'both 2 and 3'],
         correct: 'head'
     },
